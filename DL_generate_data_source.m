@@ -1,13 +1,12 @@
 
 %generate test data for aperture radiation with source
-function [ data, labels_ab, labels_source] = DL_generate_data_source(data_size, lamda, num)
+function [ data, labels_ab_source] = DL_generate_data_source(data_size, lamda, num)
     
 
     %k=2*pi()/lamda;
 
     D_matrix = zeros(num*num, data_size);
-    labels_ab = zeros(data_size, 2);
-    labels_source = zeros(data_size, 3);
+    labels_ab_source = zeros(data_size, 5);
     
     max_ab = 15;
     min_ab = 5;
@@ -26,15 +25,15 @@ function [ data, labels_ab, labels_source] = DL_generate_data_source(data_size, 
             
             D = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
             
-            plot_single_beam(D);
+            %plot_single_beam(D);
            
-         
+    
             D_matrix(:,iter) = reshape(D, [], 1);
-            labels_ab(iter, 1) = a;
-            labels_ab(iter, 2) = b;
-            labels_source(iter, 1) = x0;
-            labels_source(iter, 2) = y0;
-            labels_source(iter, 3) = d;
+            labels_ab_source(iter, 1) = a;
+            labels_ab_source(iter, 2) = b;
+            labels_ab_source(iter, 3) = x0;
+            labels_ab_source(iter, 4) = y0;
+            labels_ab_source(iter, 5) = d;
             
     end
     
