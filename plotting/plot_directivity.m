@@ -4,7 +4,7 @@ function plot_directivity( D , color_label)
 theta = 0:pi()/2/(num-1):pi()/2;
 phi= 0:2*pi()/(num-1):2*pi();
 
-[phi, theta]=meshgrid(phi,theta);
+[phi, theta] = meshgrid(phi,theta);
 
 max_D = max(max(D));
 
