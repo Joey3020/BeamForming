@@ -8,9 +8,9 @@ function [ data, labels_ab_source] = DL_generate_data_source(data_size, lamda, n
     D_matrix = zeros(num*num, data_size);
     labels_ab_source = zeros(data_size, 5);
     
-    max_ab = 15;
-    min_ab = 5;
-    max_d = 15;
+    max_ab = 20;
+    min_ab = 10;
+    max_d = 5;
     min_d = 1;
     
     for iter = 1:1:data_size

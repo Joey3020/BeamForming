@@ -1,2 +1,3 @@
-A = [1 3 2; 4 2 5; 6 1 4];
-y = sum(sum(A));
+num = 1000;
+D = ones(num);
+sa = Get_HPBW(D);
