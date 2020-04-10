@@ -9,9 +9,9 @@ num = 64;
 %d = input('d : ');
 a = 20;
 b = 20;
-x0 = 10;
-y0 = 10;
-d = 50;
+x0 = 1;
+y0 = 1;
+d = 5;
 
 [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y0, d, a, b, lamda, num);
 %Exa = ones(num);

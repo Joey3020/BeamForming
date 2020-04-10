@@ -25,7 +25,7 @@ function [ data, labels_ab_source] = DL_generate_data_source(data_size, lamda, n
             
             D = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
             
-            %plot_single_beam(D);
+            plot_single_beam(D);
            
     
             D_matrix(:,iter) = reshape(D, [], 1);
