@@ -8,7 +8,7 @@ num = 64;
      
 filename = 'C:\Users\joonho0320\Documents\testdata_without_source.xlsx';
 writematrix(data, filename, 'Sheet', 1);
-writematrix(label, filename, 'Sheet', 2);
+
 %label
 % a, b, x, y, d
 %100 개 생성하는데 3:30초 정도 걸림

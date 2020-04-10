@@ -1,10 +1,12 @@
-function data = DL_generate_test_data_withoutsource(testdata_size, lamda, num)
+function [data, labels] = DL_generate_test_data_withoutsource(testdata_size, lamda, num)
      
      
     k=2*pi()/lamda;
     etha = 120*pi();
     %preallocation
     Direct = zeros(num*num, testdata_size);
+    labels = zeros(testdata_size, 4);
+
     minlen = 10;
     maxlen = 20;
     
@@ -40,7 +42,11 @@ function data = DL_generate_test_data_withoutsource(testdata_size, lamda, num)
         direct = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
                                  
         Direct(:,iter) = reshape(direct,[],1);
-            
+        labels(iter, 1) = a;
+        labels(iter, 2) = b;
+        labels(iter, 3) = phi;
+        labels(iter, 4) = mode;
+   
     end
      data = reshape(Direct, num*num, testdata_size);
      data = data.';
