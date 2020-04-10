@@ -6,7 +6,7 @@ num = 64;
  [data, label] = DL_generate_test_data_withoutsource(data_size, lamda, num);
      
      
-filename = 'C:\Users\joonho0320\Documents\testdata_without_source.xlsx';
+filename = 'C:\Users\User\Documents\Beam_data\testdata_without_source.xlsx';
 writematrix(data, filename, 'Sheet', 1);
 writematrix(label, filename, 'Sheet', 2);
 %label

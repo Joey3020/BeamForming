@@ -6,7 +6,7 @@ num = 64;
  [ data, labels] = DL_generate_data_source(data_size, lamda, num);
      
      
-filename = 'C:\Users\User\Documents\Beam_data\testdata_with_source_beam.xlsx';
+filename = 'C:\Users\User\Documents\Beam_data\valdata_with_source_beam.xlsx';
 writematrix(data, filename, 'Sheet', 1);
 writematrix(labels, filename, 'Sheet', 2);
 

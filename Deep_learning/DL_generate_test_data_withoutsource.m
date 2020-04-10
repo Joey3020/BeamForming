@@ -7,8 +7,11 @@ function [data, labels] = DL_generate_test_data_withoutsource(testdata_size, lam
     Direct = zeros(num*num, testdata_size);
     labels = zeros(testdata_size, 4);
 
-    minlen = 10;
+    minlen = 5;
     maxlen = 20;
+    
+    processbar = waitbar(0, 'processing output');
+    
     
     for iter = 1:1:testdata_size
         mode = randi([0 1],1);
@@ -46,8 +49,10 @@ function [data, labels] = DL_generate_test_data_withoutsource(testdata_size, lam
         labels(iter, 2) = b;
         labels(iter, 3) = phi;
         labels(iter, 4) = mode;
-   
+        
+        waitbar(iter/testdata_size)
     end
      data = reshape(Direct, num*num, testdata_size);
      data = data.';
+     close(processbar)
 end
