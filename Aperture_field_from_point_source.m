@@ -23,8 +23,8 @@ function [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y0, d, a, b
             
             F = cos(pi() / 2 * cos_theta) / sin_theta;
             
-            H_phi = exp(- 1i * k * R) / R * k * F;
-            E_theta = exp(- 1i * k * R) / R * k * n0 * F;
+            H_phi = exp(- 1i * k * R) / R  * F;
+            E_theta = exp(- 1i * k * R) / R * n0 * F;
             
             Hxa(i, j) = 0;
             Hya(i, j) = - H_phi * sin_phi;
@@ -33,9 +33,9 @@ function [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y0, d, a, b
             
         end
     end
-    maxV = max(max(abs(Exa)));
-    Exa = Divide_Amplitude(Exa, maxV);
-    Eya = Divide_Amplitude(Eya, maxV);
-    Hxa = Divide_Amplitude(Hxa, maxV);
-    Hya = Divide_Amplitude(Hya, maxV);
+    %maxV = max(max(abs(Exa)));
+    %Exa = Divide_Amplitude(Exa, maxV);
+    %Eya = Divide_Amplitude(Eya, maxV);
+    %Hxa = Divide_Amplitude(Hxa, maxV);
+    %Hya = Divide_Amplitude(Hya, maxV);
 end

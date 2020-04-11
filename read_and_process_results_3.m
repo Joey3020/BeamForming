@@ -12,7 +12,7 @@ lamda = 1;
 k = 2 * pi() / lamda;
 n0 = 120 * pi();
 
-testdatasize = 100;
+testdatasize = 10;
 
 color_label_green = 1;
 color_label_blue = 2;
@@ -33,9 +33,9 @@ for iter = 1:1:testdatasize
         
     a_label = labels(iter,1);
     b_label = labels(iter,2);
-    mode_label = labels(iter,3);
-    phase_label = labels(iter,4);
-    
+    phase_label = labels(iter,3);
+    mode_label = labels(iter,4);
+
     
     % get aperture field from predicted soure pos
     % and get directivity matrix 
@@ -66,15 +66,14 @@ for iter = 1:1:testdatasize
     results(iter, 7) = phi;
     results(iter, 8) = phi_r;
     
-    
     %plot results
-    %fig = figure( iter );
-    %plot_directivity( D, color_label_blue ); % test beam is blue
-    %hold on
-    %plot_directivity( D_r, color_label_green ); %reverse beam is green
-    %hold off
-    %maximize_fig(fig);
-    %saveas(fig, sprintf('%d th result ', iter));
+    fig = figure( iter );
+    plot_directivity( D, color_label_blue ); % test beam is blue
+    hold on
+    plot_directivity( D_r, color_label_green ); %reverse beam is green
+    hold off
+    maximize_fig(fig);
+    saveas(fig, sprintf('%d th result ', iter));
     
     waitbar(iter/testdatasize)
 

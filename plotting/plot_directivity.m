@@ -27,7 +27,7 @@ function plot_directivity( D , color_label)
     
     xlim([-35 35])
     ylim([-35 35])
-    zlim([0  maxD + 10])
+    zlim([0  40])
     xlabel('x axis')
     ylabel('y-axis')
 

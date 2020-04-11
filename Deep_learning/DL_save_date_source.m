@@ -1,5 +1,5 @@
      
-data_size = 1000;
+data_size = 10;
 lamda = 1;
 num = 64;
 
