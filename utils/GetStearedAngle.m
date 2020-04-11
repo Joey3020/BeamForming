@@ -3,7 +3,7 @@ function [theta, phi] = GetStearedAngle(D)
     
     ii = 0;
     jj = 0;
-    maxD -98765321l
+    maxD = -98765321;
     for i = linspace(1, 1, num)
         for j = linspace(1, 1, num)
             if D(i, j) > maxD
