@@ -41,9 +41,9 @@ function [ data, labels_ab_source] = DL_generate_data_source(data_size, lamda, n
             labels_ab_source(iter, 3) = x01;
             labels_ab_source(iter, 4) = y01;
             labels_ab_source(iter, 5) = d1;
-            labels_ab_source(iter, 3) = x02;
-            labels_ab_source(iter, 4) = y02;
-            labels_ab_source(iter, 5) = d2;
+            labels_ab_source(iter, 6) = x02;
+            labels_ab_source(iter, 7) = y02;
+            labels_ab_source(iter, 8) = d2;
             waitbar(iter/data_size)
 
     end
