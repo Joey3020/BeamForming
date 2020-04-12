@@ -4,31 +4,33 @@
 % recover beam from prediction results
 % compare hpbw, steared angle, maximum directivity vs original beam
 
-predictions = xlsread('predictions', 1);
-labels = xlsread('testdata', 2);
+predictions = xlsread('C:\Users\joonho0320\Documents\result\predictions.xlsx', 1);
+labels = xlsread('C:\Users\joonho0320\Documents\result\test1.xlsx', 2);
 
 num = 64;
 lamda = 1;
 k = 2 * pi() / lamda;
 n0 = 120 * pi();
 
-testdatasize = 10;
+testdatasize = 1;
 
 color_label_green = 1;
 color_label_blue = 2;
 
 results = zeros(testdatasize, 8);
-PATH = 'C:\Users\User\Documents\DL_Work_Bench\result.xlsx';
+PATH = 'C:\Users\joonho0320\Documents\result\result.xlsx';
 processbar = waitbar(0, 'processing output');
 
 
 for iter = 1:1:testdatasize
     a = predictions(iter, 1);
     b = predictions(iter, 2);
-    x0 = predictions(iter, 3);
-    y0 = predictions(iter, 4);
-    d = predictions(iter, 5);
-    
+    x01 = predictions(iter, 3);
+    y01 = predictions(iter, 4);
+    d1 = predictions(iter, 5);
+    x02 = predictions(iter, 6);
+    y02 = predictions(iter, 7);
+    d2 = predictions(iter, 8);
     
         
     a_label = labels(iter,1);
@@ -39,8 +41,9 @@ for iter = 1:1:testdatasize
     
     % get aperture field from predicted soure pos
     % and get directivity matrix 
-    [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y0, d, a, b, lamda, num);
-    D_r = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
+    [Exa1, Eya1, Hxa1, Hya1] = Aperture_field_from_point_source(x01, y01, d1, a, b, lamda, num);
+    [Exa2, Eya2, Hxa2, Hya2] = Aperture_field_from_point_source(x02, y02, d2, a, b, lamda, num);
+    D_r = Get_Directivity_General(Exa1 + Exa2, Eya1 + Eya2, Hxa1 + Hxa2, Hya1 + Hya2, a, b, lamda, num);
     
     % test beam directivity matrix
     [Ex_label, Ey_label] = Set_E_field(mode_label, phase_label, a_label, b_label, num);
@@ -67,13 +70,13 @@ for iter = 1:1:testdatasize
     results(iter, 8) = phi_r;
     
     %plot results
-    fig = figure( iter );
-    plot_directivity( D, color_label_blue ); % test beam is blue
-    hold on
-    plot_directivity( D_r, color_label_green ); %reverse beam is green
-    hold off
-    maximize_fig(fig);
-    saveas(fig, sprintf('%d th result ', iter));
+    %fig = figure( iter );
+    %plot_directivity( D, color_label_blue ); % test beam is blue
+    %hold on
+    %plot_directivity( D_r, color_label_green ); %reverse beam is green
+    %hold off
+    %maximize_fig(fig);
+    %saveas(fig, sprintf('%d th result ', iter));
     
     waitbar(iter/testdatasize)
 
