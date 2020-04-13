@@ -1,6 +1,6 @@
 function [data, label] = DL_generate_data_by_class(datasize, lamda, num)
     data = zeros(datasize, num*num);
-    label = zeros(datasize, 5);
+    label = zeros(datasize, 4);
     
     MAX_L = 30;
     MAX_d = 10;
@@ -9,25 +9,30 @@ function [data, label] = DL_generate_data_by_class(datasize, lamda, num)
 
     
     for iter = 1:1:datasize
-        a = randi([1, MAX_L]);
-        b = randi([1, MAX_L]);
-        x0 = a * rand;
-        y0 = b * rand;
-        d = randi([1, MAX_d]);
+        a_class = randi([0, 20]);
+        b_class = randi([0, 20]);
+        d_class = randi([0, 4]);
+        
+        a = a_class + 10;
+        b = b_class + 10;
+        x0 = a / 2;
+        y0 = 2*a*rand - a;
+        d = (d_class + 1) * 10;
         
         [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y0, d, a, b, lamda, num);
         D = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
+        
+        plot_single_beam(D);
+
+        
         D = reshape(D, 1, []);
         
         
-        plot_single_beam(D);
-        
         data(iter, :) = D;
-        label(iter, 1) = a;
-        label(iter, 2) = b;
-        label(iter, 3) = x0;
-        label(iter, 4) = y0;
-        label(iter, 5) = d;
+        label(iter, 1) = a_class;
+        label(iter, 2) = b_class;
+        label(iter, 3) = y0;
+        label(iter, 4) = d_class;
         
         waitbar(iter / datasize)
     end

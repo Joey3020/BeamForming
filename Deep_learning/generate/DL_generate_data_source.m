@@ -9,9 +9,7 @@ function [ data, labels_ab_source] = DL_generate_data_source(data_size, lamda, n
     labels_ab_source = zeros(data_size, 8);
     
     max_ab = 30;
-    min_ab = 1;
-    max_d = 10;
-    min_d = 1;
+    min_ab = 10;
     
     processbar = waitbar(0, 'processing output');
 

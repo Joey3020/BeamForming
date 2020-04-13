@@ -2,47 +2,29 @@ function [data, labels] = DL_generate_test_data_withoutsource(testdata_size, lam
      
      
     k=2*pi()/lamda;
-    etha = 120*pi();
+    n0 = 120*pi();
     %preallocation
     Direct = zeros(num*num, testdata_size);
     labels = zeros(testdata_size, 4);
 
-    minlen = 5;
-    maxlen = 20;
+    minlen = 1;
+    maxlen = 4;
+    minphi = 0;
+    maxphi = pi()/4;
     
     processbar = waitbar(0, 'processing output');
     
     
     for iter = 1:1:testdata_size
-        mode = randi([0 1],1);
+        mode = 0;
         a = (maxlen - minlen) * rand + minlen;
         b = (maxlen - minlen) * rand + minlen;
-        phi = k * a / num * rand;
+        phi = - k * a / num * ((maxphi - minphi)*rand + minphi);
         
-        if mode == 0
-            Exa = ones(num);
-            Eya = zeros(num);
-
-        elseif mode == 1
-            q=0 : b/(num-1) : b;
-            Exa = sin(pi()/b*(q-b/2))'.*ones(num); 
-            Eya = zeros(num);
-        end
-        Hxa = -Eya ./ etha;
-        Hya = Exa ./ etha;
+        [Exa, Eya] = Set_E_field(mode, phi, a, b, num);
+        direct = Get_Directivity_General(Exa, Eya, -Eya/n0, Exa/n0, a, b, lamda, num);
         
-        for i = 1 : num
-            for j = 1 : num
-                Phase_angle_xy(i,j) = i * phi ;
-            end
-        end
-        Phase_angle_xy = reshape(Phase_angle_xy,num,num)';
-
-        Phase_exponential_xy = exp(1i*Phase_angle_xy);
-        Exa = Exa.*Phase_exponential_xy;
-        Eya = Eya.*Phase_exponential_xy;
-
-        direct = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
+        plot_single_beam(direct);
                                  
         Direct(:,iter) = reshape(direct,[],1);
         labels(iter, 1) = a;

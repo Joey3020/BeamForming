@@ -1,14 +1,13 @@
      
-data_size = 10;
-lamda = 1;
-num = 64;
+for k = 1:1
+    data_size = 1;
+    lamda = 1;
+    num = 64;
 
- [data, label] = DL_generate_test_data_withoutsource(data_size, lamda, num);
-     
-     
-filename = 'C:\Users\User\Documents\Beam_data\testdata_without_source.xlsx';
-writematrix(data, filename, 'Sheet', 1);
-writematrix(label, filename, 'Sheet', 2);
-%label
-% a, b, x, y, d
-%100 개 생성하는데 3:30초 정도 걸림
+     [ data, labels] = DL_generate_test_data_withoutsource(data_size, lamda, num);
+
+
+    filename = sprintf('testdata_without_source%d.xlsx', k);
+    writematrix(data, filename, 'Sheet', 1);
+    writematrix(labels, filename, 'Sheet', 2);
+end
