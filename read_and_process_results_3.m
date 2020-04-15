@@ -4,8 +4,8 @@
 % recover beam from prediction results
 % compare hpbw, steared angle, maximum directivity vs original beam
 
-predictions = xlsread('C:\Users\joonho0320\Documents\result\predictions.xlsx', 1);
-labels = xlsread('C:\Users\joonho0320\Documents\result\testdata_without_source1.xlsx', 2);
+predictions = xlsread('C:\Users\User\Documents\DL_Work_Bench\results\SingleSource_byClasses_fixedX\predictions.xlsx', 1);
+labels = xlsread('C:\Users\User\Documents\DL_Work_Bench\results\SingleSource_byClasses_fixedX\testdata_without_source1.xlsx', 2);
 
 num = 64;
 lamda = 1;
@@ -13,7 +13,7 @@ k = 2 * pi() / lamda;
 n0 = 120 * pi();
 
 
-testdatasize = 200;
+testdatasize = 100;
 
 color_label_green = 1;
 color_label_blue = 2;
@@ -29,10 +29,10 @@ for iter = 1:1:testdatasize
     b_class = predictions(iter, 2);
     y0 = predictions(iter, 3);
     d_class = predictions(iter, 4);
-    a = a_class + 10;
-    b = b_class + 10;
+    a = a_class + 5;
+    b = b_class + 5;
     x0 = a / 2;
-    d = (d_class + 1 ) * 10;    
+    d = (d_class + 1 ) * 5;    
         
     a_label = labels(iter,1);
     b_label = labels(iter,2);
@@ -70,7 +70,7 @@ for iter = 1:1:testdatasize
     results(iter, 8) = phi_r;
     
     %plot results
-   % fig = figure( iter );
+    %fig = figure( iter );
     %plot_directivity( D, color_label_blue ); % test beam is blue
     %hold on
     %plot_directivity( D_r, color_label_green ); %reverse beam is green

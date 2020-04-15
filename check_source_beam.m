@@ -11,15 +11,15 @@ color_label_blue = 2;
 %x0 = input('x0 : ');
 %y0 = input('y0 : ');
 %d = input('d : ');
-a = 25;
-b = 25;
-x01 = 12.5;
-y01 = -25;
-d1 = 40;
+a = 10;
+b = 5;
+x01 = 5;
+y01 = -20;
+d1 = 20;
 
 x02 = 1;
 y02 = 3;
-d2 = 40;
+d2 = 25;
 
 mode_label=0;
 phi = pi()/4;
