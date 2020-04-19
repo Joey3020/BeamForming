@@ -17,6 +17,7 @@ function [data, label] = DL_generate_data_by_class(datasize, lamda, num)
         b = b_class + 5;
         x0 = a / 2;
         y0 = 2*b*rand - b;
+
         d = (d_class + 1) * 5;
         
         [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y0, d, a, b, lamda, num);

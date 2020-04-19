@@ -7,6 +7,7 @@
 predictions = xlsread('predictions.xlsx', 1);
 labels = xlsread('testdata_without_source1.xlsx', 2);
 
+
 num = 64;
 lamda = 1;
 k = 2 * pi() / lamda;
@@ -30,6 +31,7 @@ for iter = 1:1:testdatasize
     y0 = predictions(iter, 3);
     d = predictions(iter, 4); 
     
+
     a_label = labels(iter,1);
     b_label = labels(iter,2);
     phase_label = labels(iter,3);
@@ -67,14 +69,13 @@ for iter = 1:1:testdatasize
     %results(iter, 8) = phi_r;
     
     %plot results
-    fig = figure( iter );
-    plot_directivity( D, color_label_blue ); % test beam is blue
-    hold on
-    plot_directivity( D_r, color_label_green ); %reverse beam is green
-    hold off
-    maximize_fig(fig);
-    saveas(fig, sprintf('%d th result ', iter));
-    
+    %fig = figure( iter );
+    %plot_directivity( D, color_label_blue ); % test beam is blue
+    %hold on
+    %plot_directivity( D_r, color_label_green ); %reverse beam is green
+    %hold off
+    %maximize_fig(fig);
+    %saveas(fig, sprintf('%d th result ', iter));    
     waitbar(iter/testdatasize)
 
 end

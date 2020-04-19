@@ -5,7 +5,7 @@ function [data, labels] = DL_generate_test_data_withoutsource(testdata_size, lam
     n0 = 120*pi();
     %preallocation
     Direct = zeros(num*num, testdata_size);
-    labels = zeros(testdata_size, 4);
+    labels = zeros(testdata_size, 3);
 
     minlen = 1;
     maxlen = 6;
@@ -24,13 +24,13 @@ function [data, labels] = DL_generate_test_data_withoutsource(testdata_size, lam
         [Exa, Eya] = Set_E_field(mode, phi, a, b, num);
         direct = Get_Directivity_General(Exa, Eya, -Eya/n0, Exa/n0, a, b, lamda, num);
         
-        %plot_single_beam(direct);
+
+        % plot_single_beam(direct);
                                  
         Direct(:,iter) = reshape(direct,[],1);
         labels(iter, 1) = a;
         labels(iter, 2) = b;
         labels(iter, 3) = phi;
-        labels(iter, 4) = mode;
         
         waitbar(iter/testdata_size)
     end
