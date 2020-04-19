@@ -1,8 +1,8 @@
-data_size = 1;
+data_size = 300;
 lamda = 1;
 num = 64;
 
-for k = 1:1
+for k = 1:50
 
 
      [ data, labels] = DL_generate_data_by_class(data_size, lamda, num);

@@ -31,8 +31,8 @@ function [ data, labels_ab_source] = DL_generate_data_source(data_size, lamda, n
            [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y01, d1, a, b, lamda, num);
            %[Exa2, Eya2, Hxa2, Hya2] = Aperture_field_from_point_source(x0, y02, d2, a, b, lamda, num);
 
-            %D = Get_Directivity_General(Exa + Exa2, Eya + Eya2, Hxa + Hxa2, Hya + Hya2, a, b, lamda, num);
-            D = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
+            5D = Get_Directivity_General(Exa + Exa2, Eya + Eya2, Hxa + Hxa2, Hya + Hya2, a, b, lamda, num);
+            %D = Get_Directivity_General(Exa, Eya, Hxa, Hya, a, b, lamda, num);
             %plot_single_beam(D);
            
     
@@ -43,8 +43,8 @@ function [ data, labels_ab_source] = DL_generate_data_source(data_size, lamda, n
             labels_ab_source(iter, 3) = y01;
             labels_ab_source(iter, 4) = d1;
             %labels_ab_source(iter, 6) = x02;
-            %labels_ab_source(iter, 5) = y02;
-            %labels_ab_source(iter, 6) = d2;
+            labels_ab_source(iter, 5) = y02;
+            labels_ab_source(iter, 6) = d2;
             waitbar(iter/data_size)
 
     end

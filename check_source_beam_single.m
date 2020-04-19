@@ -14,11 +14,11 @@ color_label_blue = 2;
 a = 25;
 b = 25;
 x01 = 12.5;
-y01 = -15;
+y01 = -10;
 d1 = 30;
 
 x02 = 12.5;
-y02 = 15;
+y02 = 25;
 d2 = 30;
 
 mode_label=0;
@@ -29,13 +29,13 @@ b_label = 3;
 phase_label = - k * a_label / num * phi;
 
 [Exa1, Eya1, Hxa1, Hya1] = Aperture_field_from_point_source(x01, y01, d1, a, b, lamda, num);
-[Exa2, Eya2, Hxa2, Hya2] = Aperture_field_from_point_source(x01, y02, d2, a, b, lamda, num);
+[Exa2, Eya2, Hxa2, Hya2] = Aperture_field_from_point_source_perp(x02, y02, d2, a, b, lamda, num);
 %Exa = ones(num);
 %Eya = zeros(num);
 %Hxa = zeros(num);
 %Hya = ones(num) ./ (120*pi());
-D = Get_Directivity_General(Exa1 + Exa2, Eya1 + Eya2, Hxa1 + Hxa2, Hya1 + Hya2, a, b, lamda, num);
-%D = Get_Directivity_General(Exa1, Eya1 , Hxa1 , Hya1 , a, b, lamda, num);
+%D = Get_Directivity_General(Exa1 + Exa2, Eya1 + Eya2, Hxa1 + Hxa2, Hya1 + Hya2, a, b, lamda, num);
+D = Get_Directivity_General(Exa1, Eya1 , Hxa1 , Hya1 , a, b, lamda, num);
 
 [Ex_label, Ey_label] = Set_E_field(mode_label, phase_label, a_label, b_label, num);
 Dt = Get_Directivity_General(Ex_label, Ey_label, -Ey_label/n0, Ex_label/n0, a_label, b_label, lamda, num);

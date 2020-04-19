@@ -1,6 +1,6 @@
      
 for k = 1:1
-    data_size = 1;
+    data_size = 200;
     lamda = 1;
     num = 64;
 
@@ -10,4 +10,5 @@ for k = 1:1
     filename = sprintf('testdata_without_source%d.xlsx', k);
     writematrix(data, filename, 'Sheet', 1);
     writematrix(labels, filename, 'Sheet', 2);
+    
 end

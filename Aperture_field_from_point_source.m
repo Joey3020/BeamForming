@@ -18,8 +18,8 @@ function [Exa, Eya, Hxa, Hya] = Aperture_field_from_point_source(x0, y0, d, a, b
             
             cos_theta = (x - x0) / R;
             sin_theta = r / R;
-            cos_phi = d / r;
-            sin_phi = (y - y0) / r;
+            cos_phi = (y - y0) / r;
+            sin_phi = d / r;
             
             F = cos(pi() / 2 * cos_theta) / sin_theta;
             

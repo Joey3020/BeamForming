@@ -1,4 +1,4 @@
-function [theta, phi] = GetStearedAngle(D)
+function [theta, phi, ii, jj] = GetStearedAngle(D)
     [num, num] = size(D);
     
     ii = 0;
