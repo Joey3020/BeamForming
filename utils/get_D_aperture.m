@@ -2,7 +2,7 @@
 %open aperture일 경우는 Js_x, Js_y도 쓰면 됨
 %Pr 구하는 부분 optimize 함
 
-function D = get_D_aperture(Ex, Ey, Hx, Hy, a, b, k, num)
+function D = get_D_aperture(Ex, Ey, Hx, Hy, a, b, R, k, num)
 
     %Equivalent of aperture
     %open aperture
@@ -16,7 +16,7 @@ function D = get_D_aperture(Ex, Ey, Hx, Hy, a, b, k, num)
     phi = linspace(0, 2*pi(), num);
 
     %E theta field
-    [E_theta, E_phi] = get_E(theta, phi, Js_x, Js_y, Ms_x, Ms_y, a, b, k, num);
+    [E_theta, E_phi] = get_E(theta, phi, Js_x, Js_y, Ms_x, Ms_y, a, b, R, k, num);
 
     %total E field
     E_total_square = abs(E_theta) .* abs(E_theta)  +  abs(E_phi) .* abs(E_phi);
