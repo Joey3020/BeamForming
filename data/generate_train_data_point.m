@@ -5,10 +5,11 @@ function [data, labels] = generate_train_data_point(A, B, a, b, d, theta_max, R,
 
     for i = 0:1:3
         phase = theta_max / 3 * i;
-        [Exa, Eya, Hxa, Hya] = half_dipole_array_to_aperture2(A, B, a, b, d, phase, k, num);
-        D = get_D_aperture(Exa, Eya, Hxa, Hya, a, b, R, k, num);
-        plot_D(D, [0.0, 1.0, 0.0]);
-
+        %[Exa, Eya, Hxa, Hya] = half_dipole_array_to_aperture2(A, B, a, b, d, phase, k, num);
+        %D = get_D_aperture(Exa, Eya, Hxa, Hya, a, b, R, k, num);
+        %plot_D(D, [0.0, 1.0, 0.0])
+        [E_theta, E_phi] = half_dipole_array_to_aperture_space(a, b, d, R, phase, k, num);
+        D = get_D_space(E_theta, E_phi, num);
         D = reshape(D, 1, []);
         data = cat(2, data, D);
     end

@@ -18,7 +18,7 @@ function [E_theta, E_phi] = half_dipole_array_to_aperture_space(a, b, d, R, phas
     Hya = modify_phase(Hya, phase_label, num);
 
     
-    [E_theta_aperture, E_phi_aperture] = get_E(theta, phi, -Hya, Hxa, Eya, -Exa, a, b, R, k, num); % theta : 0 ~ pi / 2, distance R
+    [E_theta_aperture, E_phi_aperture] = get_E(theta, phi, Exa, Eya, Hxa, Hya, a, b, R, k, num); % theta : 0 ~ pi / 2, distance R
     
 
 
@@ -38,7 +38,7 @@ function [E_theta, E_phi] = half_dipole_array_to_aperture_space(a, b, d, R, phas
                 E_theta(i, j) = E_theta_aperture(i, j);
             else
                 %assume that R >> d
-                E_theta(i, j) = E_source(i, j) + E_theta_aperture(i, j);
+                E_theta(i, j) = E_source(i, j) * R / (R + d) * 0.5 + E_theta_aperture(i, j);
             end
         end
     end

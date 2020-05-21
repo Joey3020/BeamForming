@@ -1,26 +1,18 @@
-%grounded ì¼ ê²½ìš° Js_x Js_yë¥¼ 0ìœ¼ë¡œ ë‘ë©´ ë¨
-%open apertureì¼ ê²½ìš°ëŠ” Js_x, Js_yë„ ì“°ë©´ ë¨
-%Pr êµ¬í•˜ëŠ” ë¶€ë¶„ optimize í•¨
+    %grounded ?¼ ê²½ìš° Js_x Js_yë¥? 0?œ¼ë¡? ?‘ë©? ?¨
+%open aperture?¼ ê²½ìš°?Š” Js_x, Js_y?„ ?“°ë©? ?¨
+%Pr êµ¬í•˜?Š” ë¶?ë¶? optimize ?•¨
 
 function D = get_D_aperture(Ex, Ey, Hx, Hy, a, b, R, k, num)
-
-    %Equivalent of aperture
-    %open aperture
-    Ms_x = Ey;
-    Ms_y = - Ex; 
-    Js_x = - Hy;
-    Js_y = Hx;
 
     %spherical coordinate variables
     theta = linspace(0, pi()/2, num);
     phi = linspace(0, 2*pi(), num);
 
     %E theta field
-    [E_theta, E_phi] = get_E(theta, phi, Js_x, Js_y, Ms_x, Ms_y, a, b, R, k, num);
+    [E_theta, E_phi] = get_E(theta, phi, Ex, Ey, Hx, Hy, a, b, R, k, num);
 
     %total E field
     E_total_square = abs(E_theta) .* abs(E_theta)  +  abs(E_phi) .* abs(E_phi);
-    
     
     %total radiated power
     U = E_total_square .* sin(theta)';

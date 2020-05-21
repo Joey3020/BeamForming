@@ -1,11 +1,16 @@
-function [E_theta, E_phi] = get_E(theta, phi, Js_x, Js_y, Ms_x, Ms_y, a, b, R, k, num)
-
+function [E_theta, E_phi] = get_E(theta, phi, Exa, Eya, Hxa, Hya, a, b, R, k, num)
+    etha = 120 * pi();
+    
+    Ms_x = Eya;
+    Ms_y = - Exa;
+    Js_x = - Hya;
+    Js_y = Hxa;
+    
     N_phi = 0;
     N_theta = 0;
     L_phi = 0;
     L_theta = 0;
     
-    etha = 120 * pi();
     coeff = 1i * k * exp(-1i * k * R) / ( 4 * pi() * R);
 
     for m = 1:1:num

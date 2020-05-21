@@ -8,6 +8,7 @@ function [data, label] = generate_test_data_point(a, b, phase_max, R, k, num)
         phase = phase_max / 3 * i;
         [Exa, Eya] = uniform_aperture_field(phase, a, b, k, num);
         D = get_D_aperture(Exa, Eya, -Eya / n0, Exa / n0, a, b, R, k, num);
+        %plot_D(D, [1.0, 0.0, 0.0]);
         D = reshape(D, 1, []);
         data = cat(2, data, D);
     end

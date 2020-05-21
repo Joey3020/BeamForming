@@ -5,7 +5,7 @@ function [Ex_xy, Ey_xy] = uniform_aperture_field(phi, a, b, k, num)
 
     Phase_angle_xy = zeros(num, num);
     
-    phase = k * a / num * phi;
+    phase = - k * a / num * phi;
     
     for i = 1 : num
         for j = 1 : num
