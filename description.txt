@@ -11,14 +11,14 @@ theta_min = 0;
 theta_max = pi() / 4;
 N = 40;
 
-a_min_test = 3;
-a_max_test = 10;
-b_min_test = 3;
-b_max_test = 10;
+a_min_test = 2;
+a_max_test = 12;
+b_min_test = 2;
+b_max_test = 12;
 t_min_test = 0;
 t_max_test = pi() / 4;
 N_test = 200;
 
 num = 64;
 R = 20;
-files = 300;
+files = 400;

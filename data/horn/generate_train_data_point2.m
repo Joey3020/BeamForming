@@ -8,6 +8,7 @@ function [data, labels] = generate_train_data_point2( a, b, d, A, B, theta_max, 
         [E_theta, E_phi] = horn_to_aperture_to_space(a, b, d, A, B, phase, R, k, num);
         D = get_D_space(E_theta, E_phi, num);
         %plot_D(D, [1.0, 0.0, 0.0]);
+        %plot_D2d(D);
         D = reshape(D, 1, []);
         data = cat(2, data, D);
     end
