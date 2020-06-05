@@ -1,4 +1,4 @@
-[a, b, c, k, Num] = get_input();
+[a, b, c, k, lamda, Num] = get_input();
 
 %input / E field (magnitude and phase) at the aperture 
 %xy plane
@@ -9,7 +9,7 @@ q=0:a/(Num-1):a;
 Ey_magnitude_xy = cos(pi()/a*(q-a/2))'.*cos(pi()/a*(q-a/2)).*ones(Num);
 Phase_angle_xy = zeros(Num);
 
-iteration_time = 10;
+iteration_time = 2;
 
 Direct = zeros(Num,Num,iteration_time);
 Direct_reverse = zeros(Num,Num,iteration_time);
