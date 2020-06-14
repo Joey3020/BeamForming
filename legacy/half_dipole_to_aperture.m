@@ -1,7 +1,7 @@
 
 % get E field of half dipole antenna on metasurface
 
-function [Exa, Eya, Hxa, Hya] = half_dipole_to_aperture(d, a, b, k, num)
+function [Exa, Eya, Hxa, Hya] = half_dipole_to_aperture(d, A, B, k, num)
 
     n0 = 120 * pi();
     
@@ -14,8 +14,8 @@ function [Exa, Eya, Hxa, Hya] = half_dipole_to_aperture(d, a, b, k, num)
 
     for i = 1:1:num
         for j = 1:1:num
-            x = a * i/num - a/2;
-            y = b * j/num - b/2;
+            x = A * i/num - B/2;
+            y = B * j/num - B/2;
             
             r = sqrt(d*d + y*y);
             R = sqrt(r*r + x*x);

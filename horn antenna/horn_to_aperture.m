@@ -1,4 +1,4 @@
-function [Exa, Eya, Hxa, Hya] = horn_to_aperture(a, b, d, A, B, k, num)    
+           function [Exa, Eya, Hxa, Hya] = horn_to_aperture(a, b, d, A, B, k, num)    
     
     %assuming that the horn antenna has a 
     %uniform E field in the y direction
@@ -21,8 +21,8 @@ function [Exa, Eya, Hxa, Hya] = horn_to_aperture(a, b, d, A, B, k, num)
             sin_theta = r / R;
             
             if r ==0
-                cos_phi = 0;
-                sin_phi = 0;
+                cos_phi = 1;
+                sin_phi = 1;
             else
                 cos_phi = x / r;
                 sin_phi = y / r;
@@ -33,7 +33,7 @@ function [Exa, Eya, Hxa, Hya] = horn_to_aperture(a, b, d, A, B, k, num)
             X = k * a / 2 * sin_theta * cos_phi;
             Y = k * b / 2 * sin_theta * sin_phi;
             
-            F = sinc_(X) * sinc_(Y);
+            F = sinc_fn(X) * sinc_fn(Y);
             
             E_theta = 0.5 * coeff * sin_phi * (1 + cos_theta) * F;
             E_phi   = 0.5 * coeff * cos_phi * (1 + cos_theta) * F;
@@ -46,5 +46,4 @@ function [Exa, Eya, Hxa, Hya] = horn_to_aperture(a, b, d, A, B, k, num)
             Hya(i, j) = H_theta * cos_theta * sin_phi + H_phi * cos_phi;
         end
     end
-    
 end

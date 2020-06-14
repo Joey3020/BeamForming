@@ -1,0 +1,10 @@
+a = 1;
+b = 1;
+d = 1;
+A = 3;
+B = 1;
+phase_angle = pi()/4;
+R = 10;
+k = 2* pi();
+num = 64;
+[E_theta, E_phi] = horn_to_aperture_to_space(a, b, d, A, B, phase_angle, R, k, num);

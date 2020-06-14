@@ -1,4 +1,4 @@
-function [Exa, Eya, Hxa, Hya] = half_dipole_array_to_aperture(a, b, d, k, num)
+function [Exa, Eya, Hxa, Hya] = half_dipole_array_to_aperture(d, A, B, k, num)
     
     n0 = 120 * pi();
     
@@ -11,8 +11,8 @@ function [Exa, Eya, Hxa, Hya] = half_dipole_array_to_aperture(a, b, d, k, num)
 
     for i = 1:1:num
         for j = 1:1:num
-            x = a * i/num - a/2;
-            y = b * j/num - b/2;
+            x = A * i/num - A/2;
+            y = B * j/num - B/2;
             
             r = sqrt(d*d + y*y);
             R = sqrt(r*r + x*x);
