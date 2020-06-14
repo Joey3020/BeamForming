@@ -1,11 +1,12 @@
 
 %E_theta of half wavelenght dipole antenna in 3d space
 
-function E_theta = half_dipole_array_to_space(R, k, num)
+function [E_theta, E_phi] = hdpa2space(num)
 
     coeff = 1i * 60 * exp(-1i * k * R) / R;
 
     E_theta = zeros(num, num);
+    E_phi = zeros(num, num);
     
     for i = 1:1:num
         for j = 1:1:num

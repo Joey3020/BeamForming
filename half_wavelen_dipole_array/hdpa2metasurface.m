@@ -1,5 +1,6 @@
-function [Exa, Eya, Hxa, Hya] = half_dipole_array_to_aperture(d, A, B, k, num)
+function [Exa, Eya, Hxa, Hya] = hdpa2metasurface(d, A, B, num)
     
+    k = 2 * pi();
     n0 = 120 * pi();
     
     Exa = zeros(num, num);

@@ -1,9 +1,11 @@
-           function [Exa, Eya, Hxa, Hya] = horn_to_aperture(a, b, d, A, B, k, num)    
+function [Exa, Eya, Hxa, Hya] = horn2metasurface(a, b, d, A, B, num)    
     
     %assuming that the horn antenna has a 
     %uniform E field in the y direction
     
-    n0 = 120 * pi();    
+    n0 = 120 * pi();
+    k = 2 * pi();
+    
     Exa = zeros(num, num);
     Eya = zeros(num, num);
     Hxa = zeros(num, num);
