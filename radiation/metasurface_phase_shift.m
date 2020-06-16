@@ -1,5 +1,8 @@
+
+
 function [Exa, Eya, Hxa, Hya] = metasurface_phase_shift(Exa, Eya, Hxa, Hya, A, B, s_angle)
-    
+    k = 2 * pi();
+
     [num, num] = size(Exa);
     
     phase = linspace(0, - k * A * sin(s_angle), num)';

@@ -1,3 +1,6 @@
+
+
+%get directivity of a given beam
 function D = get_D(E_theta, E_phi)
 
     [num, num] = size(E_theta);

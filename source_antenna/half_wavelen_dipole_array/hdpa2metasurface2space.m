@@ -2,7 +2,7 @@
 % half wl diple antenna propagating
 % to space blocked by metasurface
 
-function [E_theta, E_phi] = hdpa2metasurface2space(d, A, B, s_angle, num)
+function [E_theta, E_phi] = hdpa2metasurface2space(a, b, d, A, B, s_angle, num)
     theta = linspace(0, pi() / 2, num);
     phi = linspace(0, 2 * pi(), num);
 

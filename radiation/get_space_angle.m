@@ -1,3 +1,7 @@
+
+% get space angle of beam
+% where directivity is greater than (crit - 3) dB
+
 function sa = get_space_angle(D, crit)
     [num, num] = size(D);
     
